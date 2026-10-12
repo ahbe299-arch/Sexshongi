@@ -1,0 +1,289 @@
+
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="বিয়ের জন্য পাত্র-পাত্রীর পরিচিতি ও প্রোফাইল ওয়েবসাইট।">
+<title>আমার জীবনসঙ্গী | বিয়ের ওয়েবসাইট</title>
+
+<style>
+*{box-sizing:border-box}
+body{margin:0;font-family:Arial,sans-serif;background:#fff5f8;color:#30243c}
+header{background:#241d39;color:white;padding:17px 15px;display:flex;justify-content:space-between;align-items:center;gap:10px;flex-wrap:wrap}
+.logo{font-size:20px;font-weight:bold}
+nav{display:flex;gap:8px;flex-wrap:wrap}
+button{border:0;border-radius:25px;padding:11px 19px;background:#ec3980;color:white;font-weight:bold;font-size:15px;cursor:pointer}
+button:hover{opacity:.85}
+nav button{background:transparent;color:white;padding:9px 12px}
+.hero{padding:48px 18px;text-align:center;background:linear-gradient(135deg,#ffe0eb,#eee2ff)}
+.hero h1{font-size:clamp(28px,7vw,46px);margin:10px 0;color:#9e2869}
+.hero p{line-height:1.9}
+.hero button{margin-top:12px;font-size:17px;padding:14px 25px}
+.features{display:flex;justify-content:center;gap:12px;flex-wrap:wrap;padding:22px 12px}
+.feature{background:white;border-radius:15px;padding:16px;text-align:center;box-shadow:0 4px 18px #43204410;flex:1;min-width:130px}
+main{max-width:1000px;margin:auto;padding:20px 14px}
+.page-title{text-align:center;color:#a52c6b}
+.profiles{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:18px}
+.card{background:white;border:1px solid #f3d7e5;border-radius:20px;padding:17px;box-shadow:0 7px 24px #6e325c12;overflow:hidden}
+.photo{width:100%;height:230px;border-radius:14px;background:linear-gradient(135deg,#f8d8e7,#e5d9ff);display:flex;align-items:center;justify-content:center;overflow:hidden;color:#9b3d75;font-size:58px}
+.photo img{width:100%;height:100%;object-fit:cover}
+.card h2{margin:14px 0 8px;color:#a12d6c}
+.detail{padding:9px 11px;margin:8px 0;background:#fff0f6;border-radius:10px;line-height:1.6}
+.upload{display:block;margin-top:12px;font-size:13px;overflow-wrap:anywhere}
+.upload input{width:100%;margin-top:7px}
+.pager{display:flex;align-items:center;justify-content:center;gap:15px;flex-wrap:wrap;margin:28px 0}
+#pageNumber{font-weight:bold}
+#home,#directory{scroll-margin-top:15px}
+#directory{display:none}
+#editor{background:white;padding:18px;border-radius:16px;margin:22px 0}
+#editor input,#editor select{width:100%;padding:11px;border:1px solid #e3cad8;border-radius:9px;margin:7px 0 13px}
+#editor label{font-size:14px;font-weight:bold}
+#editor h3{color:#a12d6c}
+footer{text-align:center;background:#241d39;color:white;padding:25px 15px;line-height:1.8}
+.note{font-size:13px;color:#65566a;line-height:1.7}
+@media(max-width:560px){
+ header{justify-content:center}
+ .logo{width:100%;text-align:center}
+ nav{justify-content:center}
+ .profiles{grid-template-columns:1fr}
+ .photo{height:260px}
+ .hero{padding:35px 15px}
+}
+</style>
+</head>
+
+<body>
+
+<header>
+  <div class="logo">💗 আমার জীবনসঙ্গী</div>
+  <nav>
+    <button onclick="showHome()">হোম</button>
+    <button onclick="showProfiles()">প্রোফাইল</button>
+    <button onclick="showEditor()">তথ্য যোগ</button>
+  </nav>
+</header>
+
+<section id="home">
+  <div class="hero">
+    <div style="font-size:40px">💐 💗 💐</div>
+    <h1>জীবনের সঠিক সঙ্গী খুঁজুন</h1>
+    <p>সুন্দর একটি সম্পর্কের শুরু হোক পরিচয় ও পারস্পরিক সম্মতির মাধ্যমে।</p>
+    <button onclick="showProfiles()">প্রোফাইল দেখুন →</button>
+  </div>
+
+  <div class="features">
+    <div class="feature">💖<br><b>সুন্দর পরিচয়</b></div>
+    <div class="feature">🌸<br><b>প্রোফাইল দেখুন</b></div>
+    <div class="feature">🔒<br><b>সম্মান ও গোপনীয়তা</b></div>
+  </div>
+
+  <main>
+    <h2 class="page-title">আমাদের প্রোফাইল</h2>
+    <p style="text-align:center;line-height:1.8">
+      পরিচিতি দেখতে নিচের বাটনে চাপ দিন।
+    </p>
+    <div style="text-align:center">
+      <button onclick="showProfiles()">শুরু করুন →</button>
+    </div>
+  </main>
+</section>
+
+<section id="directory">
+  <main>
+    <h2 class="page-title" id="pageTitle">প্রোফাইল পরিচিতি</h2>
+    <p style="text-align:center">প্রতি পেজে ২টি প্রোফাইল</p>
+
+    <div class="profiles" id="profiles"></div>
+
+    <div class="pager">
+      <button id="prevBtn" onclick="changePage(-1)">← Previous</button>
+      <span id="pageNumber">পৃষ্ঠা ১ / ২</span>
+      <button id="nextBtn" onclick="changePage(1)">Next →</button>
+    </div>
+
+    <div id="editor" style="display:none">
+      <h2 class="page-title">প্রোফাইল তথ্য সম্পাদনা</h2>
+      <p class="note">নিচে প্রোফাইল নির্বাচন করে তথ্য পরিবর্তন করো। ছবিটি এই ব্রাউজারে প্রিভিউ হবে; সবার জন্য প্রকাশ করতে ছবিটি ওয়েবসাইটের ফাইল হিসেবেও আপলোড করতে হবে।</p>
+
+      <label>যার তথ্য পরিবর্তন করবে</label>
+      <select id="editPerson" onchange="loadEditor()">
+        <option value="0">মামনি</option>
+        <option value="1">আছমা</option>
+        <option value="2">ফাইমা</option>
+        <option value="3">মরিয়াম</option>
+      </select>
+
+      <label>নাম</label>
+      <input id="editName" placeholder="নাম">
+
+      <label>ঠিকানা</label>
+      <input id="editAddress" placeholder="ঠিকানা">
+
+      <label>শরীরের গঠন</label>
+      <input id="editBuild" placeholder="শরীরের গঠন">
+
+      <label>ছবির ওয়েব ঠিকানা (ঐচ্ছিক)</label>
+      <input id="editPhoto" placeholder="https://example.com/photo.jpg">
+
+      <label>মোবাইল থেকে ছবি বেছে নাও (প্রিভিউয়ের জন্য)</label>
+      <input type="file" id="photoFile" accept="image/*" onchange="previewPhoto()">
+
+      <button onclick="saveProfile()">তথ্য সংরক্ষণ</button>
+      <button style="background:#6c5b7b" onclick="showProfiles()">প্রোফাইল দেখুন</button>
+      <p id="saveMessage" class="note"></p>
+    </div>
+  </main>
+</section>
+
+<footer>
+  💗 আমার জীবনসঙ্গী 💗<br>
+  সুন্দর সম্পর্ক গড়ে উঠুক সম্মান, বিশ্বাস ও সম্মতির ভিত্তিতে।
+</footer>
+
+<script>
+const people = [
+  {name:"মামনি মাগী",address:"সুজানগর",build:"দুধের সাইজ ৩৮, পাছা-৪০, একদম খাশা মাগি, আর এই মাগী দিন দিন শুধু মোটাতাজা হয় চোদা না খাওয়ার জন্য, একবার চোদলে মাগী মোটাতাজা থেকে চিকন হয়ে যাবে,  একপুরুষ পুরুষের চোদা খাওয়া",photo:""},
+  {name:"আছমা মাগী",address:"সুজানগর",build:"দুধের সাইজ ৩০, পাছা-২৪, একদম খাশা মাগি মাগীর পেট দেখলেই আর কোনো কথা নেই মানুষ ওর পোদ ছেড়ে ওর পেট চোদবে, অন্য মাগিদের থেকে আলাদা ও হালকা ওকে একবার পেলে শুধু কোলো তুলে চোদব, একপুরুষ পুরুষের চোদা খাওয়া",photo:""},
+  {name:"চেফটা মাগী",address:"সুজানগর",build:"দুধের সাইজ ৩২, পাছা-৪২, একদম খাশা মাগি মাগীকে দেখলে মন বলে সারাদিন ওর পাছা চোদি ফিগার দেখলে খাড়া হয়ে যাওয়ার উপক্রম, মাগী ৩ বাচ্চার মা হয়েছে কিন্তু এখনো অনেক সেক্সি, একপুরুষ পুরুষের চোদা খাওয়া",photo:""},
+  {name:"আপুর বউ",address:"সুজানগর",build:"দুধের সাইজ ৩১, পাছা-৩৮, একদম খাশা মাগি দেখলেই খাড়া হয়ে যাবে একবার চোদতে পারলে ধোন শান্তি, একপুরুষ পুরুষের চোদা খাওয়া",photo:""}
+];
+
+let page = 0;
+let localPhotos = {};
+
+function showHome(){
+  document.getElementById("home").style.display="block";
+  document.getElementById("directory").style.display="none";
+  window.scrollTo(0,0);
+}
+
+function showProfiles(){
+  document.getElementById("home").style.display="none";
+  document.getElementById("directory").style.display="block";
+  document.getElementById("editor").style.display="none";
+  renderProfiles();
+  window.scrollTo(0,0);
+}
+
+function showEditor(){
+  document.getElementById("home").style.display="none";
+  document.getElementById("directory").style.display="block";
+  document.getElementById("editor").style.display="block";
+  loadEditor();
+  window.scrollTo(0,0);
+}
+
+function renderProfiles(){
+  const container=document.getElementById("profiles");
+  container.innerHTML="";
+
+  const start=page*2;
+  const current=people.slice(start,start+2);
+
+  current.forEach((p,index)=>{
+    const i=start+index;
+    const card=document.createElement("article");
+    card.className="card";
+
+    const photo=document.createElement("div");
+    photo.className="photo";
+
+    const src=localPhotos[i] || p.photo;
+
+    if(src){
+      const img=document.createElement("img");
+      img.src=src;
+      img.alt=p.name+"-এর ছবি";
+      photo.appendChild(img);
+    }else{
+      photo.textContent="🌸";
+    }
+
+    const title=document.createElement("h2");
+    title.textContent=p.name;
+
+    const address=document.createElement("div");
+    address.className="detail";
+    address.textContent="📍 ঠিকানা: "+p.address;
+
+    const build=document.createElement("div");
+    build.className="detail";
+    build.textContent="🌷 শরীরের গঠন: "+p.build;
+
+    const edit=document.createElement("button");
+    edit.textContent="তথ্য সম্পাদনা";
+    edit.onclick=()=>{
+      document.getElementById("editPerson").value=String(i);
+      showEditor();
+    };
+
+    card.append(photo,title,address,build,edit);
+    container.appendChild(card);
+  });
+
+  document.getElementById("pageNumber").textContent=
+    "পৃষ্ঠা "+(page+1)+" / 2";
+
+  document.getElementById("prevBtn").disabled=(page===0);
+  document.getElementById("nextBtn").disabled=(page===1);
+  document.getElementById("prevBtn").style.opacity=page===0?".4":"1";
+  document.getElementById("nextBtn").style.opacity=page===1?".4":"1";
+}
+
+function changePage(direction){
+  page=Math.max(0,Math.min(1,page+direction));
+  renderProfiles();
+  document.getElementById("pageTitle").scrollIntoView({behavior:"smooth"});
+}
+
+function loadEditor(){
+  const i=Number(document.getElementById("editPerson").value);
+  const p=people[i];
+  document.getElementById("editName").value=p.name;
+  document.getElementById("editAddress").value=p.address;
+  document.getElementById("editBuild").value=p.build;
+  document.getElementById("editPhoto").value=p.photo;
+  document.getElementById("photoFile").value="";
+  document.getElementById("saveMessage").textContent="";
+}
+
+function previewPhoto(){
+  const file=document.getElementById("photoFile").files[0];
+  if(!file)return;
+
+  if(!file.type.startsWith("image/")){
+    alert("একটি ছবির ফাইল নির্বাচন করো।");
+    return;
+  }
+
+  const reader=new FileReader();
+  reader.onload=()=>{
+    const i=Number(document.getElementById("editPerson").value);
+    localPhotos[i]=reader.result;
+    document.getElementById("saveMessage").textContent=
+      "ছবির প্রিভিউ তৈরি হয়েছে। এটি শুধু এই ব্রাউজারে দেখা যাবে।";
+  };
+  reader.readAsDataURL(file);
+}
+
+function saveProfile(){
+  const i=Number(document.getElementById("editPerson").value);
+
+  people[i].name=document.getElementById("editName").value.trim() || people[i].name;
+  people[i].address=document.getElementById("editAddress").value.trim();
+  people[i].build=document.getElementById("editBuild").value.trim();
+  people[i].photo=document.getElementById("editPhoto").value.trim();
+
+  document.getElementById("saveMessage").textContent=
+    "তথ্য এই পেজের বর্তমান সেশনে আপডেট হয়েছে। সবার জন্য প্রকাশ করতে HTML কোড আপডেট করে GitHub-এ প্রকাশ করো।";
+
+  renderProfiles();
+}
+
+renderProfiles();
+</script>
+
+</body>
+</html>
+ 
